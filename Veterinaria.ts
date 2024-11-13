@@ -38,3 +38,16 @@ setId(nuevoId:number):void{
     this.id = nuevoId;
 }
 }
+
+//metodos 
+agregarCliente (cliente: Cliente): void {
+    this.listaClientes.push(cliente);
+}
+
+agregarMascota (mascota: Mascota): void {
+    this.listaMascotas.push(Mascota);
+}
+
+agregarProveedor (proveedor: Proveedor): void {
+    this.listaProvedores.push(proveedor);
+}
