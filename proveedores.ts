@@ -1,3 +1,3 @@
-export class proovedores {
-    
+export class Proveedor {
+
 }
