@@ -1,11 +1,13 @@
-import {Cliente} from "./Cliente"
+import { Cliente } from "./Cliente"
+import { Proveedor } from "./proveedores";
+import { Mascota } from "./Mascotas";
 export class Veterinaria {
  private nombre:string;
  private direccion:string;
  private id:number;
  private listaClientes:Cliente[]=[];
- private listaMascotas:Cliente[]=[];
- private listaProvedores:Cliente[]=[];
+ private listaMascotas:Mascotas[]=[];
+ private listaProvedores:Proveedores[]=[];
 
 
 
