@@ -2,9 +2,9 @@
 
   
 export class Sucursal{
-    nombre: string;
-    telefono: number;
-    idCliente:number;
+    private nombre: string;
+    private telefono: number;
+    private idCliente:number;
 
     constructor(nombre:string, telefono:number, idCliente:number){
         this.nombre = nombre;
