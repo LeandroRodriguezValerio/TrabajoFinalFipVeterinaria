@@ -1,6 +1,7 @@
 import { Cliente } from "./Cliente"
 import { Proveedor } from "./proveedores";
 import { Paciente } from "./Pacientes";
+import { publicDecrypt } from "crypto";
 export class Veterinaria {
  private nombre:string;
  private direccion:string;
@@ -28,6 +29,14 @@ getId():number{
     return this.id;
 }
 
+getlistaClientes():Cliente[]{
+    return this.listaClientes
+}
+
+
+
+
+
 //setters
 setNombre(nuevoNombre:string):void{
     this.nombre = nuevoNombre;
@@ -39,17 +48,19 @@ setDireccion(nuevaDireccion:string):void{
 setId(nuevoId:number):void{
     this.id = nuevoId;
 }
-}
 
 //metodos TODAVIA POR ARREGLAR
-// agregarCliente (cliente: Cliente): void {
-//     this.listaClientes.push(cliente);
-// }
 
-// agregarPaciente (mascota: Paciente): void {
-//     this.listaPacientes.push(Paciente);
-// }
+  public agregarCliente(cliente: Cliente):void {
+     this.listaClientes.push(cliente);
+ }
 
-// agregarProveedor (proveedor: Proveedor): void {
-//     this.listaProvedores.push(proveedor);
-// }
+ agregarPaciente(paciente: Paciente): void {
+     this.listaPacientes.push(paciente);
+ }
+
+ agregarProveedor(proveedor: Proveedor): void {
+     this.listaProvedores.push(proveedor);
+ }
+
+}
