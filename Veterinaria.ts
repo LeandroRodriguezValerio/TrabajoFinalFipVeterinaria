@@ -6,8 +6,8 @@ export class Veterinaria {
  private direccion:string;
  private id:number;
  private listaClientes:Cliente[]=[];
- private listaMascotas:Mascotas[]=[];
- private listaProvedores:Proveedores[]=[];
+ private listaMascotas:Mascota[]=[];
+ private listaProvedores:Proveedor[]=[];
 
 
 
