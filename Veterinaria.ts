@@ -1,11 +1,13 @@
-import {Cliente} from "./Cliente"
+import { Cliente } from "./Cliente"
+import { Proveedor } from "./proveedores";
+import { Paciente } from "./Pacientes";
 export class Veterinaria {
  private nombre:string;
  private direccion:string;
  private id:number;
  private listaClientes:Cliente[]=[];
- private listaMascotas:Cliente[]=[];
- private listaProvedores:Cliente[]=[];
+ private listaPacientes:Paciente[]=[];
+ private listaProvedores:Proveedor[]=[];
 
 
 
@@ -44,8 +46,8 @@ setId(nuevoId:number):void{
 //     this.listaClientes.push(cliente);
 // }
 
-// agregarMascota (mascota: Mascota): void {
-//     this.listaMascotas.push(Mascota);
+// agregarPaciente (mascota: Paciente): void {
+//     this.listaPacientes.push(Paciente);
 // }
 
 // agregarProveedor (proveedor: Proveedor): void {
