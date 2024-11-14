@@ -10,8 +10,12 @@ export class Cliente {
         this.telefono = telefono;
         this.id = id;
         this.cantidadVisitas = cantidadVisitas;
+        if(cantidadVisitas>=5){
+            this.vip=true
+        }else{
+            this.vip=false
+        }
     }
-
 
     public getNombre(): string {
         return this.nombre;
@@ -40,4 +44,5 @@ export class Cliente {
     public setCantidadVisitas(cantidadVisitas: number) {
         this.cantidadVisitas = cantidadVisitas;
     }
+         
 }
