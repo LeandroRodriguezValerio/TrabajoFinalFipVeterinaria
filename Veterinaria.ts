@@ -39,15 +39,15 @@ setId(nuevoId:number):void{
 }
 }
 
-//metodos 
-agregarCliente (cliente: Cliente): void {
-    this.listaClientes.push(cliente);
-}
+//metodos TODAVIA POR ARREGLAR
+// agregarCliente (cliente: Cliente): void {
+//     this.listaClientes.push(cliente);
+// }
 
-agregarMascota (mascota: Mascota): void {
-    this.listaMascotas.push(Mascota);
-}
+// agregarMascota (mascota: Mascota): void {
+//     this.listaMascotas.push(Mascota);
+// }
 
-agregarProveedor (proveedor: Proveedor): void {
-    this.listaProvedores.push(proveedor);
-}
+// agregarProveedor (proveedor: Proveedor): void {
+//     this.listaProvedores.push(proveedor);
+// }
