@@ -1,7 +1,7 @@
 import { Cliente } from "./Cliente"
 import { Proveedor } from "./proveedores";
 import { Paciente } from "./Pacientes";
-import { publicDecrypt } from "crypto";
+
 export class Veterinaria {
  private nombre:string;
  private direccion:string;
