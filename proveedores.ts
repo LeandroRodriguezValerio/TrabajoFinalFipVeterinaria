@@ -27,14 +27,14 @@ export class Proveedor {
  //setters 
 
  setNombre(nombre:string){
-    return this.nombre;
+   this.nombre=nombre;
  }
 
  setTelefono(telefono:number){
-    return this.telefono;
+   this.telefono=telefono;
  }
 
  setId(id:number){
-    return this.id;
+   this.id=id;
  }
 }

@@ -1,3 +1,5 @@
+import { Veterinaria } from "./Veterinaria";
+import {ID} from "./GeneradorID"
 export class Cliente {
     public nombre: string;
     public telefono: number;
