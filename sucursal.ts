@@ -1,15 +1,19 @@
+import { Cliente } from "./Cliente";
+import { Dato } from "./Dato";
 
 
   
-export class Sucursal{
-    private nombre: string;
-    private telefono: number;
-    private idCliente:number;
+export class Sucursal extends Dato{
+    protected nombre: string;
+    protected telefono: number;
+    protected idCliente:number;
+    protected dueño:Cliente
 
-    constructor(nombre:string, telefono:number, idCliente:number){
+    constructor(nombre:string, telefono:number,dueño:Cliente ){
+      super(nombre)
         this.nombre = nombre;
         this.telefono = telefono;
-        this.idCliente = idCliente;
+        this.idCliente = dueño.getId() ;
     }
 
     //getters 
