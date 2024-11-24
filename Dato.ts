@@ -1,3 +1,5 @@
+import * as rls from 'readline-sync';
+
 export class Dato {
     protected nombre: string;
     protected id: number;
@@ -5,12 +7,9 @@ export class Dato {
         this.nombre = nombre;
         this.id = this.generarNumRandom();
     }
-
     generarNumRandom(): number {
-
         let numeroRandom = Math.random() * 1000;
         return Math.round(numeroRandom);
-
     }
     public getNombre(): string {
         return this.nombre;
@@ -18,11 +17,12 @@ export class Dato {
     public getId(): number {
         return this.id;
     }
-
-    setNombre(nuevoNombre:string):void{
+    public setNombre() {
+        let nuevoNombre: string = rls.question("Escriba el numero nombre: ")
         this.nombre = nuevoNombre;
     }
     public setId(id: number) {
         this.id = id ;
     }
+
 }

@@ -2,6 +2,8 @@ import { Dato } from "./Dato";
 import { Id } from "./intefazId";
 import { Paciente } from "./Pacientes";
 import { Veterinaria } from "./Veterinaria";
+
+
 export class Cliente extends Dato {
     public nombre: string;
     public telefono: number;
@@ -38,9 +40,6 @@ export class Cliente extends Dato {
     }
     public getMascotas():Paciente[]{
         return this.mascotas;
-    }
-    public setNombre(nombre: string) {
-        this.nombre = nombre;
     }
     public setTelefono(telefono: number) {
         this.telefono = telefono;

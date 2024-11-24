@@ -6,14 +6,14 @@ import { Dato } from "./Dato";
 export class Sucursal extends Dato{
     protected nombre: string;
     protected telefono: number;
-    protected idCliente:number;
-    protected dueño:Cliente
-
-    constructor(nombre:string, telefono:number,dueño:Cliente ){
+    protected id:number;
+   protected direccion: string;
+    constructor(nombre:string, telefono:number,direccion:string){
       super(nombre)
         this.nombre = nombre;
         this.telefono = telefono;
-        this.idCliente = dueño.getId() ;
+        this.id = this.generarNumRandom();
+        this.direccion = direccion;
     }
 
     //getters 
@@ -25,22 +25,15 @@ export class Sucursal extends Dato{
      getTelefono():number{
         return this.telefono;
      }
-    
+     getDireccion():string{
+      return this.direccion;
+     }
      getId():number{
-        return this.idCliente;
+      return this.id
      }
     
      //setters 
-    
-     setNombre(nombre:string){
-        return this.nombre;
-     }
-    
      setTelefono(telefono:number){
         return this.telefono;
-     }
-    
-     setId(id:number){
-        return this.idCliente;
      }
 }
