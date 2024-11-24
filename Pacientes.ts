@@ -1,39 +1,34 @@
-export class Paciente {
-private nombre:string;
+import { Cliente } from "./Cliente";
+import { Dato } from "./Dato";
+
+export class Paciente extends Dato {
+protected nombre:string;
 private especie:string;
-private id:number
+public idCliente:number;
+public dueño: Cliente;
 
-constructor(nombre:string, especie:string, id:number ){
-    this.nombre = nombre
-    this.especie = especie
-    this.id = id
+constructor(nombre:string, especie:string,dueño:Cliente){
+    super(nombre);
+    this.nombre = nombre;
+    this.especie = especie;
+    this.id = this.generarNumRandom();
+    this.idCliente = dueño.getId() ;
+    this.dueño=dueño;
 }
-
 //getters
-getNombre():string{
-    return this.nombre;
-}
 getEspecie():string{
     return this.especie;
 }
 getId():number{
-    return this.id;
-}
-
-
-
+    return this.idCliente;
+ }
 //setters
-setNombre(nuevoNombre:string):void{
-    this.nombre = nuevoNombre;
-}
-
 setEspecie(nuevaEspecie:string):void{
     this.especie = nuevaEspecie;
 }
-setId(nuevoId:number):void{
-    this.id = nuevoId;
-}
-
+setId(id:number){
+    return this.idCliente;
+ }
 
 
 

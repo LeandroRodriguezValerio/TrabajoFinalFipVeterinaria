@@ -1,15 +1,19 @@
+import { Cliente } from "./Cliente";
+import { Dato } from "./Dato";
 
 
   
-export class Sucursal{
-    private nombre: string;
-    private telefono: number;
-    private idCliente:number;
-
-    constructor(nombre:string, telefono:number, idCliente:number){
+export class Sucursal extends Dato{
+    protected nombre: string;
+    protected telefono: number;
+    protected id:number;
+   protected direccion: string;
+    constructor(nombre:string, telefono:number,direccion:string){
+      super(nombre)
         this.nombre = nombre;
         this.telefono = telefono;
-        this.idCliente = idCliente;
+        this.id = this.generarNumRandom();
+        this.direccion = direccion;
     }
 
     //getters 
@@ -21,22 +25,15 @@ export class Sucursal{
      getTelefono():number{
         return this.telefono;
      }
-    
+     getDireccion():string{
+      return this.direccion;
+     }
      getId():number{
-        return this.idCliente;
+      return this.id
      }
     
      //setters 
-    
-     setNombre(nombre:string){
-        return this.nombre;
-     }
-    
      setTelefono(telefono:number){
         return this.telefono;
-     }
-    
-     setId(id:number){
-        return this.idCliente;
      }
 }
