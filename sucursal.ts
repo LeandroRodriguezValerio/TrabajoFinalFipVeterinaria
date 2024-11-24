@@ -29,14 +29,14 @@ export class Sucursal{
      //setters 
     
      setNombre(nombre:string){
-        return this.nombre;
+        return this.nombre=nombre;
      }
     
      setTelefono(telefono:number){
-        return this.telefono;
+        return this.telefono=telefono;
      }
     
      setId(id:number){
-        return this.idCliente;
+        return this.idCliente=id;
      }
 }
