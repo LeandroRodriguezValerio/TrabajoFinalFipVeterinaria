@@ -90,7 +90,7 @@ export class Menu {
         "2 - Nueva sucursal\n" +
         "3 - Modificar Sucursal\n" +
         "4 - Borrar Sucursal\n" +
-        "5 - Salir\n" +
+        "5 - Volver al menu principal\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -100,7 +100,6 @@ export class Menu {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Informacion Sucursales");
-        //mostrarSucursales()
         this.veterinaria.listaSucursal.forEach((listaSucursal) => {
           console.log(`Registro de informacion sucursales: Nombre: ${listaSucursal.getNombre()}, Telefono: ${listaSucursal.getTelefono()}, Id: ${listaSucursal.getId()}.\n`)
           });
@@ -111,17 +110,13 @@ export class Menu {
       case 2:
         console.log("Opción 2: Nueva Sucursal");
         this.veterinaria.agregarSucursal5()
-        setTimeout(() => {
           this.menuSucursal(this.sucursal);
-
-      }, 2000);
         break;
       case 3:
         console.log("Opción 3: Modificar Sucursal");
-        //modificarSucursal
+        //modificarSucursal FALTA
         setTimeout(() => {
           this.menuSucursal(this.sucursal);
-
       }, 2000);
         break;
       case 4:
@@ -129,8 +124,7 @@ export class Menu {
         this.veterinaria.darDeBajaSucursal()
         setTimeout(() => {
           this.menuSucursal(this.sucursal);
-
-      }, 2000);
+      }, 1000);
         break;
       case 5:
         console.log("Opción 4: Volver al menu principal");
@@ -153,7 +147,7 @@ export class Menu {
         "2 - Agregar nuevo Paciente\n" +
         "3 - Modificar Paciente\n" +
         "4 - Borrar Paciente\n" +
-        "5 - Salir\n" +
+        "5 - Volver al menu principal\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -165,11 +159,12 @@ export class Menu {
         console.log("Opción 1: Informacion Paciente");
         //mostrarPaciente()
         console.log(veterinaria.getListaPacientes())
-        console.log(`registro de informacion sucursales: Nombre:${this.veterinaria.getListaPacientes().map(paciente=>paciente.getNombre())} , Especie: ${this.veterinaria.getListaPacientes().map(paciente=>paciente.getEspecie())} , Id: ${this.veterinaria.getListaPacientes().map(paciente=>paciente.getId())}   `)
-
+        this.veterinaria.listaPacientes.forEach((listaPacientes) => {
+          console.log(`Registro de informacion sucursales: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
+          });
         setTimeout(() => {
           this.menuPaciente(veterinaria);
-        }, 2000);
+        }, 3000);
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Paciente");
@@ -190,7 +185,7 @@ export class Menu {
         break;
       case 4:
         console.log("Opción 4: Borrar Paciente");
-        //borrarPaciente()
+        this.veterinaria.darDeBajaPacientes()
         setTimeout(() => {
           this.menuPaciente(veterinaria);
         }, 2000);
@@ -217,7 +212,7 @@ export class Menu {
         "2 - Agregar nuevo Proveedor\n" +
         "3 - Modificar Proveedor\n" +
         "4 - Borrar Proveedor\n" +
-        "5 - Salir\n" +
+        "5 - Volver al menu principal\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -228,46 +223,44 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Proveedor");
         //mostrarSucursales()
-        console.log(`registro de informacion Proveedores: Nombre:${this.veterinaria.getListaProveedores().map(proveedor=>proveedor.getNombre())} , Telefono: ${this.veterinaria.getListaProveedores().map(proveedor=>proveedor.getTelefono())} , Id: ${this.veterinaria.getListaProveedores().map(proveedor=>proveedor.getId())}   `)
+        this.veterinaria.listaProvedores.forEach((listaProveedores) => {
+          console.log(`Registro de informacion de Proveedores: Nombre: ${listaProveedores.getNombre()}, Telefono: ${listaProveedores.getTelefono()}, Id: ${listaProveedores.getId()}.\n`)
+          });
         setTimeout(() => {
           this.menuProveedores(proveedor);
 
-      }, 2000);
+      }, 3000);
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Proveedor");
         //agregarProveedores()
+        this.veterinaria.agregarProveedor5()
         setTimeout(() => {
           this.menuProveedores(proveedor);
-
-      }, 2000);
+      }, 1000);
         break;
       case 3:
         console.log("Opción 3: Modificar Proveedor");
         //modificarProveedores
         setTimeout(() => {
           this.menuProveedores(proveedor);
-
-      }, 2000);
+      }, 1000);
         break;
       case 4:
         console.log("Opción 4: Borrar Proveedor");
-        //borrarProveedores()
+        this.veterinaria.darDeBajaProveedor()
         setTimeout(() => {
           this.menuProveedores(proveedor);
-
-      }, 2000);
+      }, 1000);
         break;
       case 5:
         console.log("Opción 4: Volver al menu principal");
         this.menuPrincipal(this.veterinaria);
-
         break;
       default:
         console.log("Opcion no válida. Por favor, elige entre 1 y 5.");
         setTimeout(() => {
             this.menuPrincipal(this.veterinaria);
-
         }, 2000);
         break;
     }
@@ -280,7 +273,7 @@ export class Menu {
         "2 - Agregar nuevo Cliente\n" +
         "3 - Modificar Cliente\n" +
         "4 - Borrar Cliente\n" +
-        "5 - Salir\n" +
+        "5 - Volver al menu principal\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -296,43 +289,37 @@ export class Menu {
       });
        setTimeout(() => {
           this.menuClientes(cliente);
-
-      }, 2000);
+      }, 3000);
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Cliente");
         this.veterinaria.agregarCliente5()
         setTimeout(() => {
           this.menuClientes(cliente);
-
-      }, 2000);
+      }, 1000);
         break;
       case 3:
         console.log("Opción 3: Modificar Cliente");
         this.veterinaria.cambioNombreCliente()
         setTimeout(() => {
           this.menuClientes(cliente);
-
-      }, 2000);
+      }, 1000);
         break;
       case 4:
         console.log("Opción 4: Borrar Cliente");
         this.veterinaria.darDeBajaCliente()
         setTimeout(() => {
           this.menuClientes(cliente);
-
-      }, 2000);
+      }, 1000);
         break;
       case 5:
         console.log("Opción 4: Volver al menu principal");
         this.menuPrincipal(this.veterinaria);
-
         break;
       default:
         console.log("Opcion no válida. Por favor, elige entre 1 y 5.");
         setTimeout(() => {
             this.menuPrincipal(this.veterinaria);
-
         }, 2000);
         break;
     }

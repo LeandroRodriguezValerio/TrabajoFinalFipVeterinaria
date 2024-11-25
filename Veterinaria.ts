@@ -4,7 +4,6 @@ import { Paciente } from "./Pacientes";
 import { Id } from "./intefazId";
 import { Sucursal } from "./sucursal";
 import * as rls from "readline-sync";
-import { Menu } from "./Menu";
 export class Veterinaria implements Id{
     private nombre: string;
     private direccion: string;
@@ -46,6 +45,7 @@ export class Veterinaria implements Id{
         let nuevoNombre: string = rls.question("Escriba el numero nombre: ")
         this.nombre = nuevoNombre;
     }
+   
 
     cambioNombreCliente():void{
         this.listaClientes.forEach((listaClientes) => {
@@ -62,7 +62,7 @@ export class Veterinaria implements Id{
             });
      }
     }
-
+    
     // Método para eliminar cliente
     public darDeBajaCliente() {
             this.listaClientes.forEach((listaClientes) => {
@@ -112,7 +112,7 @@ export class Veterinaria implements Id{
             this.listaPacientes.splice(pos, 1);
         }
     }
-    //
+    
     setDireccion(nuevaDireccion: string): void {
         this.direccion = nuevaDireccion;
     }
@@ -123,7 +123,7 @@ export class Veterinaria implements Id{
     public agregarCliente(cliente: Cliente): void {
         this.listaClientes.push(cliente);
     }
-
+    //Metodos de agregar
     agregarCliente5(){
         let nombre: string = rls.question("Escriba su nombre: ")
         let telefono: number = rls.questionInt("Escriba su telefono: ")
@@ -144,8 +144,15 @@ export class Veterinaria implements Id{
         let proveedor1= new Proveedor(nombre, telefono)
         this.agregarProveedor(proveedor1)
       }
-    
-    
+
+    //NOFUNCIONA
+    // agregarPaciente5(){
+    //     let nombre: string = rls.question("Escriba el nombre del proveedor: ")
+    //     let telefono: number = rls.questionInt("Escriba el telefono del proveedor: ")
+    //     let paciente1= new Proveedor(nombre, telefono)
+    //     this.agregarPaciente()
+    //   }
+
     agregarPaciente() {
        let numId = rls.questionInt("Escriba el numero del paciente: ") 
       if(  this.listaClientes.some(cliente => cliente.getId()===numId)){
@@ -158,6 +165,8 @@ export class Veterinaria implements Id{
     agregarProveedor(proveedor: Proveedor): void {
         this.listaProvedores.push(proveedor);
     }
+
+    //metodos Ranomizadores
     generarNumRandom():number {
         let numeroRandom = Math.random() * 100;
         return Math.round(numeroRandom);

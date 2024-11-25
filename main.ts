@@ -17,9 +17,10 @@ let menu1 =new Menu(vete1)
 vete1.agregarCliente(cliente1)
 vete1.agregarCliente(cliente2)
 vete1.agregarCliente(cliente3)
+
 // console.log(vete1.getlistaClientes())   
 // console.log(paciente1.getId())
-//vete1.setNumRandom(paciente1)
+vete1.setNumRandom(paciente1)
 // console.log(cliente1.getId())
 // console.log(paciente1.getId())
 
