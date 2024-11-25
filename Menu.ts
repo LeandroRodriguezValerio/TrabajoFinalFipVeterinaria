@@ -291,15 +291,17 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Cliente");
         //mostrarSucursales()
-        console.log(`registro de informacion sucursales: Nombre:${this.veterinaria.getlistaClientes().map(cliente=>cliente.getNombre())} , Telefono: ${this.veterinaria.getlistaClientes().map(cliente=>cliente.getTelefono())} , Id: ${this.veterinaria.getlistaClientes().map(sucursal=>sucursal.getId())}`)
-        setTimeout(() => {
+        this.veterinaria.listaClientes.forEach((listaClientes) => {
+          console.log(`Registro de informacion sucursales: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
+      });
+       setTimeout(() => {
           this.menuClientes(cliente);
 
       }, 2000);
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Cliente");
-        //agregarSucursal()
+        this.veterinaria.agregarCliente5()
         setTimeout(() => {
           this.menuClientes(cliente);
 
@@ -307,7 +309,7 @@ export class Menu {
         break;
       case 3:
         console.log("Opción 3: Modificar Cliente");
-        //modificarSucursal
+        this.veterinaria.cambioNombreCliente()
         setTimeout(() => {
           this.menuClientes(cliente);
 
@@ -315,7 +317,7 @@ export class Menu {
         break;
       case 4:
         console.log("Opción 4: Borrar Cliente");
-        //borrarSucursal()
+        this.veterinaria.darDeBajaCliente()
         setTimeout(() => {
           this.menuClientes(cliente);
 
@@ -335,4 +337,6 @@ export class Menu {
         break;
     }
   }
+  
+
 }
