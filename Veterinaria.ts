@@ -65,18 +65,54 @@ export class Veterinaria implements Id{
 
     // Método para eliminar cliente
     public darDeBajaCliente() {
-        this.listaClientes.forEach((listaClientes) => {
-            console.log(`Registro de informacion sucursales: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
-            });
-         let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
+            this.listaClientes.forEach((listaClientes) => {
+                console.log(`Registro de informacion sucursales: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
+                });
+        let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
         let pos = this.listaClientes.findIndex(cliente=>cliente.getId() ===numId);
+            if (pos==-1) {
+                console.log("No hay clientes con ese Id")  
+                }else{
+                    this.listaClientes.splice(pos, 1);
+                }
+    }
+    public darDeBajaSucursal() {
+        this.listaSucursal.forEach((listaSucursal) => {
+            console.log(`Registro de informacion sucursales: Nombre: ${listaSucursal.getNombre()}, Telefono: ${listaSucursal.getTelefono()}, Id: ${listaSucursal.getId()}.\n`)
+            });
+        let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
+        let pos = this.listaSucursal.findIndex(Sucursal=>Sucursal.getId() ===numId);
+            if (pos==-1) {
+                console.log("No hay Sucursales con ese Id")  
+                }else{
+                    this.listaSucursal.splice(pos, 1);
+                }
+    }
+    public darDeBajaProveedor() {
+        this.listaProvedores.forEach((listaProvedores) => {
+            console.log(`Registro de informacion sucursales: Nombre: ${listaProvedores.getNombre()}, Telefono: ${listaProvedores.getTelefono()}, Id: ${listaProvedores.getId()}.\n`)
+            });
+        let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
+        let pos = this.listaProvedores.findIndex(Provedores=>Provedores.getId() ===numId);
     if (pos==-1) {
-        console.log("No hay clientes con ese Id")  
+        console.log("No hay proveedores con ese Id")  
         }else{
-            this.listaClientes.splice(pos, 1);
+            this.listaProvedores.splice(pos, 1);
         }
-   }
-
+    }
+    public darDeBajaPacientes() {
+        this.listaPacientes.forEach((listaPacientes) => {
+            console.log(`Registro de informacion sucursales: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}, Dueño: ${listaPacientes.getDueño()}.\n`)
+            });
+        let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
+        let pos = this.listaPacientes.findIndex(Pacientes=>Pacientes.getId() ===numId);
+    if (pos==-1) {
+        console.log("No hay pacientes con ese Id")  
+        }else{
+            this.listaPacientes.splice(pos, 1);
+        }
+    }
+    //
     setDireccion(nuevaDireccion: string): void {
         this.direccion = nuevaDireccion;
     }
@@ -95,9 +131,21 @@ export class Veterinaria implements Id{
         let cliente5= new Cliente(nombre, telefono, visitas)
         this.agregarCliente(cliente5)
       }
+    agregarSucursal5(){
+        let nombre: string = rls.question("Escriba el nombre de la sucursal: ")
+        let telefono: number = rls.questionInt("Escriba el telefono de la sucursal: ")
+        let direccion: string = rls.question("Escriba la direccion de la sucursal: ")
+        let sucursal1= new Sucursal(nombre, telefono, direccion)
+        this.agregarSucursal(sucursal1)
+      }
+    agregarProveedor5(){
+        let nombre: string = rls.question("Escriba el nombre del proveedor: ")
+        let telefono: number = rls.questionInt("Escriba el telefono del proveedor: ")
+        let proveedor1= new Proveedor(nombre, telefono)
+        this.agregarProveedor(proveedor1)
+      }
     
     
-
     agregarPaciente() {
        let numId = rls.questionInt("Escriba el numero del paciente: ") 
       if(  this.listaClientes.some(cliente => cliente.getId()===numId)){
@@ -105,7 +153,7 @@ export class Veterinaria implements Id{
       }else { console.log("No hay paciente con ese id")}
     }
     agregarSucursal(sucursal:Sucursal){
-        this.listaSucursal.push(sucursal)
+        this.listaSucursal.push(sucursal);
     }
     agregarProveedor(proveedor: Proveedor): void {
         this.listaProvedores.push(proveedor);

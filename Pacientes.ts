@@ -22,12 +22,15 @@ getEspecie():string{
 getId():number{
     return this.idCliente;
  }
+getDueño():Cliente{
+    return this.dueño;
+}
 //setters
 setEspecie(nuevaEspecie:string):void{
     this.especie = nuevaEspecie;
 }
 setId(id:number){
-    return this.idCliente;
+    this.idCliente=id;
  }
 
 

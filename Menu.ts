@@ -101,16 +101,16 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Sucursales");
         //mostrarSucursales()
-        //this.sucursal.forEach(sucursal=>console.log(` Nombre : ${sucursal.getNombre()} Direccion: ${sucursal.getDireccion()} Id: ${sucursal.getId()}  `))
-        console.log(`registro de informacion sucursales: Nombre:${this.veterinaria.getListaSucursal().map(sucursal=>sucursal.getNombre())} , Direccion: ${this.veterinaria.getListaSucursal().map(sucursal=>sucursal.getDireccion())} , Id: ${this.veterinaria.getListaSucursal().map(sucursal=>sucursal.getId())}   `)
+        this.veterinaria.listaSucursal.forEach((listaSucursal) => {
+          console.log(`Registro de informacion sucursales: Nombre: ${listaSucursal.getNombre()}, Telefono: ${listaSucursal.getTelefono()}, Id: ${listaSucursal.getId()}.\n`)
+          });
         setTimeout(() => {
           this.menuSucursal(this.sucursal);
-
-      }, 2000);
+      }, 3000);
         break;
       case 2:
         console.log("Opción 2: Nueva Sucursal");
-        //agregarSucursal()
+        this.veterinaria.agregarSucursal5()
         setTimeout(() => {
           this.menuSucursal(this.sucursal);
 
@@ -126,7 +126,7 @@ export class Menu {
         break;
       case 4:
         console.log("Opción 4: Borrar Sucursal");
-        //borrarSucursal()
+        this.veterinaria.darDeBajaSucursal()
         setTimeout(() => {
           this.menuSucursal(this.sucursal);
 
