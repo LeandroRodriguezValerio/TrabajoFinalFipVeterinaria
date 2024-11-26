@@ -56,6 +56,7 @@ export class Veterinaria implements Id{
     public agregarCliente(cliente: Cliente): void {
         this.listaClientes.push(cliente);
     }
+    
     agregarPaciente() {
        let numId = rls.questionInt("Escriba el numero del paciente: ") 
       if(  this.listaClientes.some(cliente => cliente.getId()===numId)){

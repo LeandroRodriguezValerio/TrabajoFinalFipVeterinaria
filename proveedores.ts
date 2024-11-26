@@ -18,6 +18,6 @@ export class Proveedor extends Dato{
  }
  //setters 
  setTelefono(telefono:number){
-    return this.telefono;
+    this.telefono= telefono;
  }
 }
