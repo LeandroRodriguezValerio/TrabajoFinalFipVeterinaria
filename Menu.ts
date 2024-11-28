@@ -5,6 +5,7 @@ import { Paciente } from "./Pacientes";
 import { Proveedor } from "./proveedores";
 import { Sucursal } from "./sucursal";
 import { Dato } from "./Dato";
+import cluster from "cluster";
 
 export class Menu {
   veterinaria: Veterinaria;
@@ -158,9 +159,8 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Paciente");
         //mostrarPaciente()
-        console.log(veterinaria.getListaPacientes())
         this.veterinaria.listaPacientes.forEach((listaPacientes) => {
-          console.log(`Registro de informacion sucursales: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
+          console.log(`Registro de informacion de Pacientes: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
           });
         setTimeout(() => {
           this.menuPaciente(veterinaria);
@@ -169,8 +169,7 @@ export class Menu {
       case 2:
         console.log("Opción 2: Agregar nuevo Paciente");
         //agregarPaciente()
-        
-        veterinaria.agregarPaciente()
+        //this.agregarMenuPaciente() 
         setTimeout(() => {
           this.menuPaciente(veterinaria);
         }, 2000);
@@ -204,6 +203,7 @@ export class Menu {
         break;
     }
   }
+  
   menuProveedores(proveedor: Proveedor[]) {
     console.clear();
     console.log(
@@ -266,6 +266,7 @@ export class Menu {
     }
   }
   menuClientes(cliente:Cliente[]) {
+
     console.clear();
     console.log(
       "----------------------------------------\n" +
@@ -285,8 +286,9 @@ export class Menu {
         console.log("Opción 1: Informacion Cliente");
         //mostrarSucursales()
         this.veterinaria.listaClientes.forEach((listaClientes) => {
-          console.log(`Registro de informacion sucursales: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
+          console.log(`Registro de informacion sucursales: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Mascotas: ${listaClientes.mascotas.map(mascota=>mascota.getNombre())}.\n`)
       });
+
        setTimeout(() => {
           this.menuClientes(cliente);
       }, 3000);
@@ -324,6 +326,18 @@ export class Menu {
         break;
     }
   }
-  
+ /* agregarMenuPaciente(){
+     let id = rls.questionInt("Escriba el Id del duenio: ")
+     let pos = this.veterinaria.listaClientes.findIndex(cliente=>cliente.getId()==id)
+    this.veterinaria.agregarPaciente(this.cliente[pos])
+    //this.cliente[id].setMascotas()
+    let pregunta = rls.questionInt("Quiere agregar una mascota? 1-SI 2-NO: ")
+        while(pregunta===1){
+            this.veterinaria.agregarPaciente(this.cliente[pos])
+            
+            pregunta = rls.questionInt("Quiere agregar otra mascota? 1-SI 2-NO: ")
+        }
+  }*/
+
 
 }

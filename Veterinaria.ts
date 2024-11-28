@@ -11,7 +11,7 @@ export class Veterinaria implements Id{
     public listaClientes: Cliente[] = [];
     public listaPacientes: Paciente[] = [];
     public listaProvedores: Proveedor[] = [];
-    public listaSucursal :Sucursal[]=[]
+    public listaSucursal :Sucursal[] = []
     constructor(nombre: string, direccion: string, id: number) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -102,7 +102,7 @@ export class Veterinaria implements Id{
     }
     public darDeBajaPacientes() {
         this.listaPacientes.forEach((listaPacientes) => {
-            console.log(`Registro de informacion sucursales: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}, Dueño: ${listaPacientes.getDueño()}.\n`)
+            console.log(`Registro de informacion sucursales: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}\n`)
             });
         let numId: number = rls.questionInt("Escriba el Id a modificar el nombre: ")
         let pos = this.listaPacientes.findIndex(Pacientes=>Pacientes.getId() ===numId);
@@ -113,6 +113,12 @@ export class Veterinaria implements Id{
         }
     }
     
+
+
+
+
+
+
     setDireccion(nuevaDireccion: string): void {
         this.direccion = nuevaDireccion;
     }
@@ -130,8 +136,38 @@ export class Veterinaria implements Id{
         let visitas: number = rls.questionInt("Escriba la cantidad de visitas: ")
         let cliente5= new Cliente(nombre, telefono, visitas)
         this.agregarCliente(cliente5)
+        let pregunta = rls.questionInt("Quiere agregar una mascota? 1-SI 2-NO: ")
+        while(pregunta===1){
+            this.agregarPaciente(cliente5)
+            
+            pregunta = rls.questionInt("Quiere agregar otra mascota? 1-SI 2-NO: ")
+        }
       }
-    agregarSucursal5(){
+    agregarMascota(mascota:Paciente) {
+        this.listaPacientes.push(mascota)
+
+    }
+
+    agregarPaciente(cliente:Cliente) {
+        this.listaClientes.forEach((listaClientes) => {
+            console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()} Id: ${listaClientes.getId()}.\n`)
+        });
+       let idDuenio= rls.questionInt("Escriba el Id del duenio: ")
+       let nombreMascota = rls.question("Escriba el nombre de la mascota: ") 
+       let especie = rls.question("Escriba especie si es perro, gato o exotica: ")
+       let mascota1= new Paciente(nombreMascota,especie,idDuenio)
+       //this.agregarMascota(mascota1)
+       cliente.setMascotas(mascota1)
+    }
+    
+    /*agregarPaciente() {
+       let numId = rls.questionInt("Escriba el numero del paciente: ") 
+      if(  this.listaClientes.some(cliente => cliente.getId()===numId)){
+       this.listaPacientes.push();
+      }else { console.log("No hay paciente con ese id")}
+    }*/
+
+      agregarSucursal5(){
         let nombre: string = rls.question("Escriba el nombre de la sucursal: ")
         let telefono: number = rls.questionInt("Escriba el telefono de la sucursal: ")
         let direccion: string = rls.question("Escriba la direccion de la sucursal: ")
@@ -143,22 +179,7 @@ export class Veterinaria implements Id{
         let telefono: number = rls.questionInt("Escriba el telefono del proveedor: ")
         let proveedor1= new Proveedor(nombre, telefono)
         this.agregarProveedor(proveedor1)
-      }
-
-    //NOFUNCIONA
-    // agregarPaciente5(){
-    //     let nombre: string = rls.question("Escriba el nombre del proveedor: ")
-    //     let telefono: number = rls.questionInt("Escriba el telefono del proveedor: ")
-    //     let paciente1= new Proveedor(nombre, telefono)
-    //     this.agregarPaciente()
-    //   }
-
-    agregarPaciente() {
-       let numId = rls.questionInt("Escriba el numero del paciente: ") 
-      if(  this.listaClientes.some(cliente => cliente.getId()===numId)){
-       this.listaPacientes.push();
-      }else { console.log("No hay paciente con ese id")}
-    }
+      }  
     agregarSucursal(sucursal:Sucursal){
         this.listaSucursal.push(sucursal);
     }
