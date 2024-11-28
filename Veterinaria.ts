@@ -13,6 +13,7 @@ export class Veterinaria implements Id{
     public listaPacientes: Paciente[] = [];
     public listaProvedores: Proveedor[] = [];
     public listaSucursal :Sucursal[]=[]
+    public listaMascota : Paciente[]=[]
     constructor(nombre: string, direccion: string, id: number) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -39,6 +40,9 @@ export class Veterinaria implements Id{
     }
     getListaSucursal():Sucursal[]{
         return this.listaSucursal
+    }
+    getListaMascota():Paciente[]{
+        return this.listaMascota
     }
     
     //setters
@@ -95,15 +99,31 @@ export class Veterinaria implements Id{
         let cliente5= new Cliente(nombre, telefono, visitas)
         this.agregarCliente(cliente5)
       }
-    
-    
+      
+      mostrarMascotaCliente(id:number):void{
+        console.log(this.listaClientes.find(cliente =>cliente.getId()==id))
+        console.log(this.listaMascota.filter(paciente => paciente.getId()==id))
 
-    agregarPaciente() {
-       let numId = rls.questionInt("Escriba el numero del paciente: ") 
-      if(  this.listaClientes.some(cliente => cliente.getId()===numId)){
-       this.listaPacientes.push();
-      }else { console.log("No hay paciente con ese id")}
+      }
+    agregarMascota(mascota:Paciente) {
+        this.listaPacientes.push(mascota)
+        
     }
+    
+    agregarPaciente() {
+       let nombreMascota = rls.question("Escriba el nombre de la mascota: ") 
+       let especie = rls.question("Escriba especie si es perro, gato o exotica:")
+       let idDueño= rls.questionInt("Escriba el Id del duenio")
+       let mascota1= new Paciente(nombreMascota,especie,idDueño)
+       this.agregarMascota(mascota1)
+       let pos = this.listaClientes.findIndex(listaClientes=>listaClientes.getId() ===idDueño);
+        if (pos==-1) {
+            console.log("No hay dueños con ese id")
+        }else{
+         this.listaClientes[pos].setMascotas(mascota1);
+        }
+    }
+  
     agregarSucursal(sucursal:Sucursal){
         this.listaSucursal.push(sucursal)
     }
@@ -118,4 +138,5 @@ export class Veterinaria implements Id{
         let num =this.generarNumRandom()
         paciente.setId(num);
     }
+  
 }

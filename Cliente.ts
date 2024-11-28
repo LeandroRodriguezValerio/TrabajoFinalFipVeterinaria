@@ -24,7 +24,7 @@ export class Cliente extends Dato {
         }
         if(mascotas!=undefined){
             this.mascotas= mascotas
-        }else{
+        }else {
             this.mascotas=[]
         }
     }
@@ -49,5 +49,7 @@ export class Cliente extends Dato {
     }
     public setMascotas(mascotas:Paciente){
         this.mascotas.push(mascotas)
+
+
     }
 }
