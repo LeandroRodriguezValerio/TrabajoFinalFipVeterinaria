@@ -191,6 +191,7 @@ export class Menu {
       case 4:
         console.log("Opción 4: Borrar Paciente");
         //borrarPaciente()
+        this.veterinaria.borrarPaciente()
         setTimeout(() => {
           this.menuPaciente(paciente,cliente);
         }, 2000);
@@ -292,7 +293,7 @@ export class Menu {
         console.log("Opción 1: Informacion Cliente");
         //mostrarSucursales()
         this.veterinaria.listaClientes.forEach((listaClientes) => {
-          console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre:${listaClientes.mascotas.map(mascota=>mascota.getNombre())}\n`)
+          console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota:${listaClientes.mascotas.map(mascota=>mascota.getNombre())}\n`)
 
         });
        setTimeout(() => {
@@ -311,6 +312,7 @@ export class Menu {
       case 3:
         console.log("Opción 3: Modificar Cliente");
         this.veterinaria.cambioNombreCliente()
+        this.veterinaria.cambioTelefonoCliente()
         setTimeout(() => {
           this.menuClientes(cliente);
 

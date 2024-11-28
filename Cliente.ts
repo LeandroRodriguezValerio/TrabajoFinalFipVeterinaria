@@ -49,7 +49,10 @@ export class Cliente extends Dato {
     }
     public setMascotas(mascotas:Paciente){
         this.mascotas.push(mascotas)
+        
 
-
+    }
+    public eliminarPaciente(num:number){
+        this.mascotas.splice(num,1)
     }
 }
