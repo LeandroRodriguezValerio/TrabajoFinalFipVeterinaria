@@ -136,8 +136,8 @@ export class Veterinaria implements Id {
             console.log("No hay pacientes con ese Id")
         } else {
           //  this.listaClientes[pos].eliminarPaciente(pos);
-            this.listaClientes.findIndex(Cliente => Cliente.eliminarPaciente(pos))
-            this.listaPacientes.splice(pos,1)
+            this.listaClientes.find(Cliente => Cliente.eliminarPaciente(pos))
+           this.listaPacientes.splice(pos,1)
             
         }
     }
