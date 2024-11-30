@@ -26,6 +26,6 @@ setEspecie(nuevaEspecie:string):void{
     this.especie = nuevaEspecie;
 }
 setId(id:number){
-    return this.id;
+     this.id=id;
  }
 }

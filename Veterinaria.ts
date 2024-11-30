@@ -47,7 +47,7 @@ export class Veterinaria implements Id {
 
     //setters
     public setNombre() {
-        let nuevoNombre: string = rls.question("Escriba el numero nombre: ")
+        let nuevoNombre: string = rls.question("Escriba el nuevo nombre: ")
         this.nombre = nuevoNombre;
     }
 
@@ -107,7 +107,6 @@ export class Veterinaria implements Id {
     public agregarCliente(cliente: Cliente): void {
         this.listaClientes.push(cliente);
     }
-
     agregarCliente5() {
         let nombre: string = rls.question("Escriba su nombre: ")
         let telefono: number = rls.questionInt("Escriba su telefono: ")
@@ -115,7 +114,6 @@ export class Veterinaria implements Id {
         let cliente5 = new Cliente(nombre, telefono, visitas)
         this.agregarCliente(cliente5)
     }
-
     mostrarMascotaCliente(id: number): void {
         console.log(this.listaClientes.find(cliente => cliente.getId() == id))
         console.log(this.listaMascota.filter(paciente => paciente.getId() == id))
@@ -129,17 +127,30 @@ export class Veterinaria implements Id {
 
         this.listaPacientes.forEach((listaPacientes) => {
             console.log(`Registro de informacion pacientes: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}\n`)
+
         });
-        let nombre: string = rls.question("Escriba e nombre del paciente a quitar : ")
-        let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
+        let nombre: string = rls.question("Escriba el nombre del paciente a quitar : ")
+        let id: number = rls.questionInt("Escriba el id del paciente a quitar : ")
+    /*    let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
+        
         if (pos == -1) {
-            console.log("No hay pacientes con ese Id")
+            console.log("No se encuentra ese paciente")
         } else {
           //  this.listaClientes[pos].eliminarPaciente(pos);
             this.listaClientes.find(Cliente => Cliente.eliminarPaciente(pos))
            this.listaPacientes.splice(pos,1)
             
+        }*/
+        let posId = this.listaClientes.findIndex(Cliente =>Cliente.getId()===id);
+        let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
+        if (pos==-1){
+            console.log("no hay")
+        }else{
+          //  this.listaClientes.find(Cliente => Cliente[posId].eliminarPaciente(pos))
+this.listaClientes[posId].eliminarPaciente(pos)
+            this.listaPacientes.splice(pos,1)
         }
+        
     }
     agregarPaciente() {
         let nombreMascota = rls.question("Escriba el nombre de la mascota: ")
@@ -152,9 +163,9 @@ export class Veterinaria implements Id {
             console.log("No hay dueños con ese id")
         } else {
             this.listaClientes[pos].setMascotas(mascota1);
+           
         }
     }
-
     agregarSucursal(sucursal: Sucursal) {
         this.listaSucursal.push(sucursal)
     }
