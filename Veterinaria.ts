@@ -138,7 +138,7 @@ export class Veterinaria implements Id{
         this.agregarCliente(cliente5)
         let pregunta = rls.questionInt("Quiere agregar una mascota? 1-SI 2-NO: ")
         while(pregunta===1){
-            this.agregarPaciente(cliente5)
+            this.agregarPaciente()
             
             pregunta = rls.questionInt("Quiere agregar otra mascota? 1-SI 2-NO: ")
         }
@@ -148,16 +148,18 @@ export class Veterinaria implements Id{
 
     }
 
-    agregarPaciente(cliente:Cliente) {
-        this.listaClientes.forEach((listaClientes) => {
-            console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()} Id: ${listaClientes.getId()}.\n`)
-        });
-       let idDuenio= rls.questionInt("Escriba el Id del duenio: ")
-       let nombreMascota = rls.question("Escriba el nombre de la mascota: ") 
-       let especie = rls.question("Escriba especie si es perro, gato o exotica: ")
-       let mascota1= new Paciente(nombreMascota,especie,idDuenio)
-       //this.agregarMascota(mascota1)
-       cliente.setMascotas(mascota1)
+    agregarPaciente() {
+        let nombreMascota = rls.question("Escriba el nombre de la mascota: ")
+        let especie = rls.question("Escriba especie si es perro, gato o exotica:")
+        let idDueño = rls.questionInt("Escriba el Id del duenio")
+        let mascota1 = new Paciente(nombreMascota, especie, idDueño)
+        this.agregarMascota(mascota1)
+        let pos = this.listaClientes.findIndex(listaClientes => listaClientes.getId() === idDueño);
+        if (pos == -1) {
+            console.log("No hay dueños con ese id")
+        } else {
+            this.listaClientes[pos].setMascotas(mascota1);
+        }
     }
     
     /*agregarPaciente() {

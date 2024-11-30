@@ -61,7 +61,7 @@ export class Menu {
         break;
       case 2:
         console.log("Opción 2: Pacientes");
-        this.menuPaciente(this.veterinaria)
+        this.menuPaciente(this.paciente,this.cliente)
         break;
       case 3:
         console.log("Opción 3: Proveedores");
@@ -140,7 +140,7 @@ export class Menu {
         break;
     }
   }
-  menuPaciente(veterinaria:Veterinaria) {
+  menuPaciente(paciente:Paciente[],cliente:Cliente[]) {
     console.clear();
     console.log(
       "----------------------------------------\n" +
@@ -148,7 +148,7 @@ export class Menu {
         "2 - Agregar nuevo Paciente\n" +
         "3 - Modificar Paciente\n" +
         "4 - Borrar Paciente\n" +
-        "5 - Volver al menu principal\n" +
+        "5 - Salir\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -159,34 +159,35 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Paciente");
         //mostrarPaciente()
-        this.veterinaria.listaPacientes.forEach((listaPacientes) => {
-          console.log(`Registro de informacion de Pacientes: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
-          });
+        console.log(this.veterinaria.getListaPacientes())
+        console.log(`registro de informacion pacientes: Nombre:${this.veterinaria.getListaPacientes().map(paciente=>paciente.getNombre())} , Especie: ${this.veterinaria.getListaPacientes().map(paciente=>paciente.getEspecie())} , Id: ${this.veterinaria.getListaPacientes().map(paciente=>paciente.getId())}   `)
+
         setTimeout(() => {
-          this.menuPaciente(veterinaria);
-        }, 3000);
+          this.menuPaciente(paciente,cliente);
+        }, 2000);
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Paciente");
-        //agregarPaciente()
-        //this.agregarMenuPaciente() 
+
+        this.veterinaria.agregarPaciente();
+                  
         setTimeout(() => {
-          this.menuPaciente(veterinaria);
+          this.menuPaciente(paciente,cliente);
         }, 2000);
         break;
       case 3:
         console.log("Opción 3: Modificar Paciente");
         //modificarPaciente
-        veterinaria.setNombre()
+        this.veterinaria.setNombre()
         setTimeout(() => {
-          this.menuPaciente(veterinaria);
+          this.menuPaciente(paciente,cliente);
         }, 2000);
         break;
       case 4:
         console.log("Opción 4: Borrar Paciente");
-        this.veterinaria.darDeBajaPacientes()
+        //borrarPaciente()
         setTimeout(() => {
-          this.menuPaciente(veterinaria);
+          this.menuPaciente(paciente,cliente);
         }, 2000);
         break;
       case 5:
