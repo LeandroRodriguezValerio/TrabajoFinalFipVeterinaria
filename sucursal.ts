@@ -28,5 +28,8 @@ export class Sucursal extends Dato{
      }
     
      //setters 
+     setDireccion(direccion:string){
+      this.direccion=direccion
+     }
    
 }

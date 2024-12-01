@@ -28,7 +28,7 @@ vete1.agregarCliente(cliente3)
 // console.log(cliente1.getNombre())
 // //cliente1.setNombre()
 // console.log(cliente1.getNombre())
-vete1.agregarSucursal(sucursal1)
+//vete1.agregarSucursal()
 
 //vete1.agregarPaciente()
 menu1.menuPrincipal(vete1)
