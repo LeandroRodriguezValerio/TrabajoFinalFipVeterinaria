@@ -13,6 +13,11 @@ let paciente1 = new Paciente("perro","perro",12)
 let proveedor1 = new Proveedor("prov",155551) 
 let sucursal1 =new Sucursal("Patitas","Rivadavia 2420")
 let menu1 =new Menu(vete1)
+vete1.agregarCliente(cliente1)
+vete1.agregarCliente(cliente2)
+vete1.agregarCliente(cliente3)
+
+
 //console.log(cliente1)
 //vete1.agregarCliente(cliente1)
 //console.log(vete1.getlistaClientes())   

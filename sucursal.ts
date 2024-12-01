@@ -7,10 +7,9 @@ export class Sucursal extends Dato{
     protected nombre: string;
     protected id:number;
    protected direccion: string;
-    constructor(nombre:string,direccion:string){
+    constructor(nombre:string, direccion:string){
       super(nombre)
         this.nombre = nombre;
-        
         this.id = this.generarNumRandom();
         this.direccion = direccion;
     }
@@ -20,16 +19,17 @@ export class Sucursal extends Dato{
     getNombre():string{
         return this.nombre;
      }
-    
-    
-     
+
      getDireccion():string{
       return this.direccion;
      }
      getId():number{
-      return this.id;
+      return this.id
      }
     
-     
+     //setters 
+     setDireccion(direccion:string){
+      this.direccion=direccion
      }
-
+   
+}

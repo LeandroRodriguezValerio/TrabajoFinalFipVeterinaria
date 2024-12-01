@@ -18,7 +18,7 @@ export class Dato {
         return this.id;
     }
     public setNombre() {
-        let nuevoNombre: string = rls.question("Escriba el numero nombre: ")
+        let nuevoNombre: string = rls.question("Escriba el nuevo nombre: ")
         this.nombre = nuevoNombre;
     }
     public setId(id: number) {
