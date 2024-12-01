@@ -236,7 +236,7 @@ export class Menu {
         break;
       case 2:
         console.log("Opción 2: Agregar nuevo Proveedor");
-        //agregarProveedores()
+        this.veterinaria.agregarProveedor()
         setTimeout(() => {
           this.menuProveedores(proveedor);
 
@@ -290,8 +290,11 @@ export class Menu {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Informacion Cliente");
-        //mostrarSucursales()
-        console.log(`registro de informacion sucursales: Nombre:${this.veterinaria.getlistaClientes().map(cliente=>cliente.getNombre())} , Telefono: ${this.veterinaria.getlistaClientes().map(cliente=>cliente.getTelefono())} , Id: ${this.veterinaria.getlistaClientes().map(sucursal=>sucursal.getId())}`)
+        //mostrarClientes()
+        this.veterinaria.listaClientes.forEach((listaClientes) => {
+          console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota:${listaClientes.mascotas.map(mascota => mascota.getNombre())}\n`)
+
+        });
         setTimeout(() => {
           this.menuClientes(cliente);
 
