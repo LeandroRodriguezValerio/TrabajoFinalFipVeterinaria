@@ -8,7 +8,7 @@ export class Dato {
         this.id = this.generarNumRandom();
     }
     generarNumRandom(): number {
-        let numeroRandom = Math.random() * 1000;
+        let numeroRandom = Math.random() * 10000;
         return Math.round(numeroRandom);
     }
     public getNombre(): string {

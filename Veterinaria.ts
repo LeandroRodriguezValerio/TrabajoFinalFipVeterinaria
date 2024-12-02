@@ -159,8 +159,8 @@ this.listaClientes[posId].eliminarPaciente(pos)
   
           });
         let nombreMascota = rls.question("Escriba el nombre de la mascota: ")
-        let especie = rls.question("Escriba especie si es perro, gato o exotica:")
-        let idDueño = rls.questionInt("Escriba el Id del duenio")
+        let especie = rls.question("Escriba especie si es perro, gato o exotica: ")
+        let idDueño = rls.questionInt("Escriba el Id del duenio: ")
         let mascota1 = new Paciente(nombreMascota, especie, idDueño)
         this.agregarMascota(mascota1)
         let pos = this.listaClientes.findIndex(listaClientes => listaClientes.getId() === idDueño);
