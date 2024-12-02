@@ -188,7 +188,7 @@ this.listaClientes[posId].eliminarPaciente(pos)
     }
     cambioEspeciePaciente(): void {
         this.listaPacientes.forEach((listaPacientes) => {
-            console.log(`Registro de informacion Cliente: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.}.\n`)
+            console.log(`Registro de informacion Cliente: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
         });
         let numId: number = rls.questionInt("Escriba el Id a modificar la especie: ")
         let pos = this.listaPacientes.findIndex(paciente => paciente.getId() === numId);
@@ -255,7 +255,10 @@ this.listaClientes[posId].eliminarPaciente(pos)
     
     
  //-------------------------------------------- PROVEEDOR
-    agregarProveedor(proveedor: Proveedor): void {
+    agregarProveedor(): void {
+        let nombre: string = rls.question("Escriba su nombre del Proveedor: ")
+        let telefono: number = rls.questionInt("Escriba el telefono del Proveedor: ")
+        let proveedor = new Proveedor(nombre, telefono)
         this.listaProvedores.push(proveedor);
     }
     cambioTelefonoProveedores(): void {

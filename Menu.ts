@@ -172,7 +172,6 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Paciente");
         //mostrarPaciente()
-        console.log(this.veterinaria.getListaPacientes())
         console.log(`registro de informacion pacientes: Nombre:${this.veterinaria.getListaPacientes().map(paciente => paciente.getNombre())} , Especie: ${this.veterinaria.getListaPacientes().map(paciente => paciente.getEspecie())} , Id: ${this.veterinaria.getListaPacientes().map(paciente => paciente.getId())}   `)
 
         setTimeout(() => {
@@ -242,7 +241,7 @@ export class Menu {
       case 1:
         console.log("Opción 1: Informacion Proveedor");
         //mostrarSucursales()
-        console.log(`registro de informacion Proveedores: Nombre:${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getNombre())} , Telefono: ${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getTelefono())} , Id: ${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getId())}   `)
+        console.log(`registro de informacion Proveedores: Nombre:${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getNombre())} , Telefono: ${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getTelefono())} , Id: ${this.veterinaria.getListaProveedores().map(proveedor => proveedor.getId())}\n`)
         setTimeout(() => {
           this.menuProveedores(proveedor);
 
@@ -251,6 +250,7 @@ export class Menu {
       case 2:
         console.log("Opción 2: Agregar nuevo Proveedor");
         //agregarProveedores()
+        this.veterinaria.agregarProveedor()
         setTimeout(() => {
           this.menuProveedores(proveedor);
 
@@ -313,7 +313,7 @@ export class Menu {
         console.log("Opción 1: Informacion Cliente");
         //mostrarSucursales()
         this.veterinaria.listaClientes.forEach((listaClientes) => {
-          console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota:${listaClientes.mascotas.map(mascota => mascota.getNombre())}\n`)
+          console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota: ${listaClientes.mascotas.map(mascota => mascota.getNombre())},VIP ${listaClientes.getVip()}\n`)
 
         });
         setTimeout(() => {
