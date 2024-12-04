@@ -1,8 +1,5 @@
 import { Dato } from "./Dato";
-import { Id } from "./intefazId";
 import { Paciente } from "./Pacientes";
-import { Veterinaria } from "./Veterinaria";
-
 
 export class Cliente extends Dato {
     public nombre: string;

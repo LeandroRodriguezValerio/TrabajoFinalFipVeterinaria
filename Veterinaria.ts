@@ -4,7 +4,7 @@ import { Paciente } from "./Pacientes";
 import { Id } from "./intefazId";
 import { Sucursal } from "./sucursal";
 import * as rls from "readline-sync";
-import { Menu } from "./Menu";
+
 export class Veterinaria implements Id {
     private nombre: string;
     private direccion: string;

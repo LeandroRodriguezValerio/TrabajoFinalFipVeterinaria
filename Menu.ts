@@ -4,7 +4,6 @@ import { Cliente } from "./Cliente";
 import { Paciente } from "./Pacientes";
 import { Proveedor } from "./proveedores";
 import { Sucursal } from "./sucursal";
-import { Dato } from "./Dato";
 
 export class Menu {
   veterinaria: Veterinaria;
