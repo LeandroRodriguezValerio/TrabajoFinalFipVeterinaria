@@ -101,7 +101,11 @@ export class Veterinaria implements Id {
             
             let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === numId);
             let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getId() === numId);
-            this.listaPacientes.splice(posPac, 1)
+            
+           
+            do {
+                 this.listaPacientes.splice(posPac, 1)
+            } while (this.listaPacientes.find(Pacientes => Pacientes.getId() === numId));
         }
     }
 
