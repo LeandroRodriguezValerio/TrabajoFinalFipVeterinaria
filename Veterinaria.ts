@@ -141,11 +141,25 @@ export class Veterinaria implements Id {
 
         });
         let nombre: string = rls.question("Escriba el nombre del paciente a quitar : ")
-        let id: number = rls.questionInt("Escriba el id del paciente a quitar : ")
-        let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === id);
-        let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-        this.listaClientes[posId].buscarPaciente(nombre)
-        this.listaPacientes.splice(posPac, 1)
+        let verificarNombre = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre)
+        
+        if(verificarNombre==-1){
+            console.log("No se encontro un paciente con ese nombre")
+        } else {
+            
+            let id: number = rls.questionInt("Escriba el id del paciente a quitar : ")
+            let verificarId = this.listaClientes.findIndex(Cliente => Cliente.getId() === id);
+            if (verificarId==-1){
+                console.log("No se encontro un paciente con ese ID")
+            } else {
+                let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === id);
+                let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
+                this.listaClientes[posId].buscarPaciente(nombre)
+                this.listaPacientes.splice(posPac, 1)
+            } 
+        }
+
+        
     }
     agregarPaciente() {
         this.listaClientes.forEach((listaClientes) => {
