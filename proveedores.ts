@@ -1,40 +1,23 @@
-export class Proveedor {
- private nombre: string;
- private telefono: number;
- private id:number;    
+import { Dato } from "./Dato";
 
- constructor(nombre:string, telefono:number, id:number){
+export class Proveedor extends Dato{
+ protected nombre: string;
+ protected telefono: number;
+ protected id:number;    
+
+ constructor(nombre:string, telefono:number){
+   super(nombre)
     this.nombre = nombre;
     this.telefono = telefono;
-    this.id = id;
+    this.id = this.generarNumRandom();
 
  }
-
  //getters
-
- getNombre():string{
-    return this.nombre;
- }
-
  getTelefono():number{
     return this.telefono;
  }
-
- getId():number{
-    return this.id;
- }
-
  //setters 
-
- setNombre(nombre:string){
-    return this.nombre;
- }
-
  setTelefono(telefono:number){
-    return this.telefono;
- }
-
- setId(id:number){
-    return this.id;
+    this.telefono=telefono;
  }
 }
