@@ -112,7 +112,12 @@ export class Veterinaria implements Id {
         let telefono: number = rls.questionInt("Escriba su telefono: ")
         let visitas: number = rls.questionInt("Escriba la cantidad de visitas: ")
         let cliente5 = new Cliente(nombre, telefono, visitas)
-        this.agregarCliente(cliente5)
+        //this.agregarCliente(cliente5)
+
+        do {
+            cliente5 = new Cliente(nombre, telefono, visitas)
+        } while (this.listaClientes.some(cliente => cliente.getId()==cliente5.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==cliente5.getId())||this.listaSucursal.some(suc => suc.getId()==cliente5.getId()));
+        this.listaClientes.push(cliente5)
     }
     mostrarMascotaCliente(id: number): void {
         console.log(this.listaClientes.find(cliente => cliente.getId() == id))
@@ -143,24 +148,35 @@ export class Veterinaria implements Id {
             
         }*/
         let posId = this.listaClientes.findIndex(Cliente =>Cliente.getId()===id);
-        let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-        if (pos==-1){
-            console.log("no hay")
-        }else{
+        let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
+    //    let pos = this.listaClientes.findIndex(cliente => cliente.getMascotas()===nombre);
+        
+     // {  if (pos==-1){
+     //       console.log("no hay")
+     //  } }else{
           //  this.listaClientes.find(Cliente => Cliente[posId].eliminarPaciente(pos))
-this.listaClientes[posId].eliminarPaciente(pos)
-            this.listaPacientes.splice(pos,1)
-        }
+     //   this.listaClientes[posId].eliminarPaciente(pos)
+       //     this.listaClientes.forEach()
+        //    this.listaClientes[posId].eliminarPaciente(pos)
+        this.listaClientes[posId].buscarPaciente(nombre)
+            this.listaPacientes.splice(posPac,1)
+        
         
     }
     agregarPaciente() {
         this.listaClientes.forEach((listaClientes) => {
             console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota:${listaClientes.mascotas.map(mascota => mascota.getNombre())}\n`)
-  
-          });
+        });
         let nombreMascota = rls.question("Escriba el nombre de la mascota: ")
-        let especie = rls.question("Escriba especie si es perro, gato o exotica:")
-        let idDueño = rls.questionInt("Escriba el Id del duenio")
+        let especie = rls.question("Escriba especie si es perro, gato o exotica: ")
+        if (especie==="perro") {
+            especie = "Perro"
+            }else if(especie==="gato"){
+                especie = "Gato"
+            } else {
+                especie = "Exotico"
+            }
+        let idDueño = rls.questionInt("Escriba el Id del duenio: ")
         let mascota1 = new Paciente(nombreMascota, especie, idDueño)
         this.agregarMascota(mascota1)
         let pos = this.listaClientes.findIndex(listaClientes => listaClientes.getId() === idDueño);
@@ -188,7 +204,7 @@ this.listaClientes[posId].eliminarPaciente(pos)
     }
     cambioEspeciePaciente(): void {
         this.listaPacientes.forEach((listaPacientes) => {
-            console.log(`Registro de informacion Cliente: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.}.\n`)
+            console.log(`Registro de informacion Cliente: Nombre: ${listaPacientes.getNombre()}, Especie: ${listaPacientes.getEspecie()}, Id: ${listaPacientes.getId()}.\n`)
         });
         let numId: number = rls.questionInt("Escriba el Id a modificar la especie: ")
         let pos = this.listaPacientes.findIndex(paciente => paciente.getId() === numId);
@@ -206,7 +222,12 @@ this.listaClientes[posId].eliminarPaciente(pos)
     agregarSucursal() {
         let nombre: string = rls.question("Escriba su nombre de la sucursal: ")
         let direccion: string = rls.question("Escriba la direccion de la sucursal: ")
-        let sucursal2 = new Sucursal(nombre, direccion)
+           let sucursal2 = new Sucursal(nombre, direccion)
+        
+        
+        do {
+            sucursal2 = new Sucursal(nombre, direccion)
+        } while (this.listaClientes.some(cliente => cliente.getId()==sucursal2.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==sucursal2.getId())||this.listaSucursal.some(suc => suc.getId()==sucursal2.getId()));
         this.listaSucursal.push(sucursal2)
     }
     cambioNombreSucursal(): void {
@@ -255,11 +276,17 @@ this.listaClientes[posId].eliminarPaciente(pos)
     
     
  //-------------------------------------------- PROVEEDOR
-    agregarProveedor() {
-        let nombre: string = rls.question("Escriba el nombre del proveedor: ")
-        let telefono: number = rls.questionInt("Escriba el telefono del proveedor: ")
-        let proveedor2 = new Proveedor(nombre, telefono)
-        this.listaProvedores.push(proveedor2);
+    agregarProveedor(): void {
+        let nombre: string = rls.question("Escriba su nombre del Proveedor: ")
+        let telefono: number = rls.questionInt("Escriba el telefono del Proveedor: ")
+        let proveedor = new Proveedor(nombre, telefono)
+        //this.listaProvedores.push(proveedor);
+
+        do {
+            proveedor = new Proveedor(nombre, telefono)
+        } while (this.listaClientes.some(cliente => cliente.getId()==proveedor.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==proveedor.getId())||this.listaSucursal.some(suc => suc.getId()==proveedor.getId()));
+        this.listaProvedores.push(proveedor)
+
     }
     cambioTelefonoProveedores(): void {
         this.listaProvedores.forEach((listaProvedores) => {

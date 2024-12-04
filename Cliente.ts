@@ -49,9 +49,13 @@ export class Cliente extends Dato {
     }
     public setMascotas(mascotas:Paciente){
         this.mascotas.push(mascotas)
-        
+         }
+    public buscarPaciente(nombre:string){
+     let num=   this.mascotas.findIndex(mascotas => mascotas.getNombre()===nombre)
+     this.mascotas.splice(num,1)
+    }    
 
-    }
+    
     public eliminarPaciente(num:number){
         this.mascotas.splice(num,1)
     }
