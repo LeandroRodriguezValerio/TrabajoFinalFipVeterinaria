@@ -14,6 +14,7 @@ export class Veterinaria implements Id {
     public listaProvedores: Proveedor[] = [];
     public listaSucursal: Sucursal[] = []
     public listaMascota: Paciente[] = []
+
     constructor(nombre: string, direccion: string, id: number) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -83,6 +84,7 @@ export class Veterinaria implements Id {
             });
         }
     }
+
     // Método para eliminar cliente
     public darDeBajaCliente() {
         this.listaClientes.forEach((listaClientes) => {
@@ -101,6 +103,7 @@ export class Veterinaria implements Id {
             } while (this.listaPacientes.find(Pacientes => Pacientes.getId() === numId));
         }
     }
+
 
     setDireccion(nuevaDireccion: string): void {
         this.direccion = nuevaDireccion;
@@ -161,6 +164,7 @@ export class Veterinaria implements Id {
 
         
     }
+
     agregarPaciente() {
         this.listaClientes.forEach((listaClientes) => {
             console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota:${listaClientes.mascotas.map(mascota => mascota.getNombre())}\n`)

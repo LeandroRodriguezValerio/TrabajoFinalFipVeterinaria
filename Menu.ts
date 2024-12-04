@@ -297,6 +297,7 @@ export class Menu {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Informacion Cliente");
+
         //mostrarclientes
         this.veterinaria.listaClientes.forEach((listaClientes) => {
           console.log(`Registro de informacion Clientes: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}, Nombre Mascota: ${listaClientes.mascotas.map(mascota => mascota.getNombre())},VIP ${listaClientes.getVip()}\n`)
@@ -314,12 +315,14 @@ export class Menu {
         break;
       case 3:
         console.log("Opción 3: Modificar Cliente");
+
         let pregunta: number = rls.questionInt("Elija 1 modificar Nombre 2 modificar Telefono: ")
         if (pregunta == 1) {
           this.veterinaria.cambioNombreCliente()
         } else if (pregunta == 2) {
           this.veterinaria.cambioTelefonoCliente()
         } else { console.log("Opcion incorrecta") }
+
         setTimeout(() => {
           this.menuClientes(cliente);
         }, 2000);

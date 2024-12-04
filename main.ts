@@ -17,7 +17,6 @@ vete1.agregarCliente(cliente1)
 vete1.agregarCliente(cliente2)
 vete1.agregarCliente(cliente3)
 
-
 //console.log(cliente1)
 //vete1.agregarCliente(cliente1)
 //console.log(vete1.getlistaClientes())   
