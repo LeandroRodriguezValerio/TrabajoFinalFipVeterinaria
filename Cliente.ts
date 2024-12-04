@@ -1,8 +1,5 @@
 import { Dato } from "./Dato";
-import { Id } from "./intefazId";
 import { Paciente } from "./Pacientes";
-import { Veterinaria } from "./Veterinaria";
-
 
 export class Cliente extends Dato {
     public nombre: string;
@@ -24,7 +21,7 @@ export class Cliente extends Dato {
         }
         if(mascotas!=undefined){
             this.mascotas= mascotas
-        }else{
+        }else {
             this.mascotas=[]
         }
     }
@@ -49,5 +46,14 @@ export class Cliente extends Dato {
     }
     public setMascotas(mascotas:Paciente){
         this.mascotas.push(mascotas)
+         }
+    public buscarPaciente(nombre:string){
+     let num=   this.mascotas.findIndex(mascotas => mascotas.getNombre()===nombre)
+     this.mascotas.splice(num,1)
+    }    
+
+    
+    public eliminarPaciente(num:number){
+        this.mascotas.splice(num,1)
     }
 }

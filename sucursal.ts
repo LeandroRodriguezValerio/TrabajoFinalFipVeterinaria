@@ -5,13 +5,11 @@ import { Dato } from "./Dato";
   
 export class Sucursal extends Dato{
     protected nombre: string;
-    protected telefono: number;
     protected id:number;
    protected direccion: string;
-    constructor(nombre:string, telefono:number,direccion:string){
+    constructor(nombre:string, direccion:string){
       super(nombre)
         this.nombre = nombre;
-        this.telefono = telefono;
         this.id = this.generarNumRandom();
         this.direccion = direccion;
     }
@@ -21,10 +19,7 @@ export class Sucursal extends Dato{
     getNombre():string{
         return this.nombre;
      }
-    
-     getTelefono():number{
-        return this.telefono;
-     }
+
      getDireccion():string{
       return this.direccion;
      }
@@ -33,7 +28,8 @@ export class Sucursal extends Dato{
      }
     
      //setters 
-     setTelefono(telefono:number){
-        return this.telefono;
+     setDireccion(direccion:string){
+      this.direccion=direccion
      }
+   
 }
