@@ -94,16 +94,9 @@ export class Veterinaria implements Id {
             console.log("No hay clientes con ese Id")
         } else {
             this.listaClientes.splice(pos, 1);
-           /* let mascotaId = this.listaPacientes.filter((listaMascota) => 
-            listaMascota.getId() == numId)
-            mascotaId.splice(0,1) 
-            */
-            
-            let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === numId);
+    
+           do {
             let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getId() === numId);
-            
-           
-            do {
                  this.listaPacientes.splice(posPac, 1)
             } while (this.listaPacientes.find(Pacientes => Pacientes.getId() === numId));
         }
@@ -149,31 +142,10 @@ export class Veterinaria implements Id {
         });
         let nombre: string = rls.question("Escriba el nombre del paciente a quitar : ")
         let id: number = rls.questionInt("Escriba el id del paciente a quitar : ")
-        /*    let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-            
-            if (pos == -1) {
-                console.log("No se encuentra ese paciente")
-            } else {
-              //  this.listaClientes[pos].eliminarPaciente(pos);
-                this.listaClientes.find(Cliente => Cliente.eliminarPaciente(pos))
-               this.listaPacientes.splice(pos,1)
-                
-            }*/
         let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === id);
         let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-        //    let pos = this.listaClientes.findIndex(cliente => cliente.getMascotas()===nombre);
-
-        // {  if (pos==-1){
-        //       console.log("no hay")
-        //  } }else{
-        //  this.listaClientes.find(Cliente => Cliente[posId].eliminarPaciente(pos))
-        //   this.listaClientes[posId].eliminarPaciente(pos)
-        //     this.listaClientes.forEach()
-        //    this.listaClientes[posId].eliminarPaciente(pos)
         this.listaClientes[posId].buscarPaciente(nombre)
         this.listaPacientes.splice(posPac, 1)
-
-
     }
     agregarPaciente() {
         this.listaClientes.forEach((listaClientes) => {
