@@ -206,7 +206,12 @@ this.listaClientes[posId].eliminarPaciente(pos)
     agregarSucursal() {
         let nombre: string = rls.question("Escriba su nombre de la sucursal: ")
         let direccion: string = rls.question("Escriba la direccion de la sucursal: ")
-        let sucursal2 = new Sucursal(nombre, direccion)
+           let sucursal2 = new Sucursal(nombre, direccion)
+        
+        
+        do {
+            sucursal2 = new Sucursal(nombre, direccion)
+        } while (this.listaClientes.some(cliente => cliente.getId()==sucursal2.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==sucursal2.getId())||this.listaSucursal.some(suc => suc.getId()==sucursal2.getId()));
         this.listaSucursal.push(sucursal2)
     }
     cambioNombreSucursal(): void {
