@@ -50,7 +50,7 @@ export class Veterinaria implements Id {
         let nuevoNombre: string = rls.question("Escriba el nuevo nombre: ")
         this.nombre = nuevoNombre;
     }
- //-----------------------------------------CLIENTES
+    //-----------------------------------------CLIENTES
     cambioNombreCliente(): void {
         this.listaClientes.forEach((listaClientes) => {
             console.log(`Registro de informacion Cliente: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
@@ -66,14 +66,14 @@ export class Veterinaria implements Id {
             });
         }
     }
-    
+
     cambioTelefonoCliente(): void {
         this.listaClientes.forEach((listaClientes) => {
             console.log(`Registro de informacion Cliente: Nombre: ${listaClientes.getNombre()}, Telefono: ${listaClientes.getTelefono()}, Id: ${listaClientes.getId()}.\n`)
         });
         let numId: number = rls.questionInt("Escriba el Id del cliente a modificar el telefono: ")
         let pos = this.listaClientes.findIndex(cliente => cliente.getId() === numId);
-        let telefono= rls.questionInt("Escriba el nuevo numero: ")
+        let telefono = rls.questionInt("Escriba el nuevo numero: ")
         if (pos == -1) {
             console.log("No hay clientes con ese Id")
         } else {
@@ -94,6 +94,14 @@ export class Veterinaria implements Id {
             console.log("No hay clientes con ese Id")
         } else {
             this.listaClientes.splice(pos, 1);
+           /* let mascotaId = this.listaPacientes.filter((listaMascota) => 
+            listaMascota.getId() == numId)
+            mascotaId.splice(0,1) 
+            */
+            
+            let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === numId);
+            let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getId() === numId);
+            this.listaPacientes.splice(posPac, 1)
         }
     }
 
@@ -103,7 +111,7 @@ export class Veterinaria implements Id {
     setId(nuevoId: number): void {
         this.id = nuevoId;
     }
-   
+
     public agregarCliente(cliente: Cliente): void {
         this.listaClientes.push(cliente);
     }
@@ -116,7 +124,7 @@ export class Veterinaria implements Id {
 
         do {
             cliente5 = new Cliente(nombre, telefono, visitas)
-        } while (this.listaClientes.some(cliente => cliente.getId()==cliente5.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==cliente5.getId())||this.listaSucursal.some(suc => suc.getId()==cliente5.getId()));
+        } while (this.listaClientes.some(cliente => cliente.getId() == cliente5.getId()) || this.listaProvedores.some(Proveedor => Proveedor.getId() == cliente5.getId()) || this.listaSucursal.some(suc => suc.getId() == cliente5.getId()));
         this.listaClientes.push(cliente5)
     }
     mostrarMascotaCliente(id: number): void {
@@ -124,7 +132,7 @@ export class Veterinaria implements Id {
         console.log(this.listaMascota.filter(paciente => paciente.getId() == id))
 
     }
- //--------------------------------MASCOTAS / PACIENTES
+    //--------------------------------MASCOTAS / PACIENTES
     agregarMascota(mascota: Paciente) {
         this.listaPacientes.push(mascota)
 
@@ -137,31 +145,31 @@ export class Veterinaria implements Id {
         });
         let nombre: string = rls.question("Escriba el nombre del paciente a quitar : ")
         let id: number = rls.questionInt("Escriba el id del paciente a quitar : ")
-    /*    let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-        
-        if (pos == -1) {
-            console.log("No se encuentra ese paciente")
-        } else {
-          //  this.listaClientes[pos].eliminarPaciente(pos);
-            this.listaClientes.find(Cliente => Cliente.eliminarPaciente(pos))
-           this.listaPacientes.splice(pos,1)
+        /*    let pos = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
             
-        }*/
-        let posId = this.listaClientes.findIndex(Cliente =>Cliente.getId()===id);
+            if (pos == -1) {
+                console.log("No se encuentra ese paciente")
+            } else {
+              //  this.listaClientes[pos].eliminarPaciente(pos);
+                this.listaClientes.find(Cliente => Cliente.eliminarPaciente(pos))
+               this.listaPacientes.splice(pos,1)
+                
+            }*/
+        let posId = this.listaClientes.findIndex(Cliente => Cliente.getId() === id);
         let posPac = this.listaPacientes.findIndex(Pacientes => Pacientes.getNombre() === nombre);
-    //    let pos = this.listaClientes.findIndex(cliente => cliente.getMascotas()===nombre);
-        
-     // {  if (pos==-1){
-     //       console.log("no hay")
-     //  } }else{
-          //  this.listaClientes.find(Cliente => Cliente[posId].eliminarPaciente(pos))
-     //   this.listaClientes[posId].eliminarPaciente(pos)
-       //     this.listaClientes.forEach()
+        //    let pos = this.listaClientes.findIndex(cliente => cliente.getMascotas()===nombre);
+
+        // {  if (pos==-1){
+        //       console.log("no hay")
+        //  } }else{
+        //  this.listaClientes.find(Cliente => Cliente[posId].eliminarPaciente(pos))
+        //   this.listaClientes[posId].eliminarPaciente(pos)
+        //     this.listaClientes.forEach()
         //    this.listaClientes[posId].eliminarPaciente(pos)
         this.listaClientes[posId].buscarPaciente(nombre)
-            this.listaPacientes.splice(posPac,1)
-        
-        
+        this.listaPacientes.splice(posPac, 1)
+
+
     }
     agregarPaciente() {
         this.listaClientes.forEach((listaClientes) => {
@@ -169,13 +177,13 @@ export class Veterinaria implements Id {
         });
         let nombreMascota = rls.question("Escriba el nombre de la mascota: ")
         let especie = rls.question("Escriba especie si es perro, gato o exotica: ")
-        if (especie==="perro") {
+        if (especie === "perro") {
             especie = "Perro"
-            }else if(especie==="gato"){
-                especie = "Gato"
-            } else {
-                especie = "Exotico"
-            }
+        } else if (especie === "gato") {
+            especie = "Gato"
+        } else {
+            especie = "Exotico"
+        }
         let idDueño = rls.questionInt("Escriba el Id del duenio: ")
         let mascota1 = new Paciente(nombreMascota, especie, idDueño)
         this.agregarMascota(mascota1)
@@ -184,7 +192,7 @@ export class Veterinaria implements Id {
             console.log("No hay dueños con ese id")
         } else {
             this.listaClientes[pos].setMascotas(mascota1);
-           
+
         }
     }
     cambioNombrePaciente(): void {
@@ -208,7 +216,7 @@ export class Veterinaria implements Id {
         });
         let numId: number = rls.questionInt("Escriba el Id a modificar la especie: ")
         let pos = this.listaPacientes.findIndex(paciente => paciente.getId() === numId);
-        let especie= rls.question("Escriba la nueva especie: ")
+        let especie = rls.question("Escriba la nueva especie: ")
         if (pos == -1) {
             console.log("No hay paciente con ese Id")
         } else {
@@ -218,16 +226,16 @@ export class Veterinaria implements Id {
             });
         }
     }
- //------------------------------------------ SUCURSAL
+    //------------------------------------------ SUCURSAL
     agregarSucursal() {
         let nombre: string = rls.question("Escriba su nombre de la sucursal: ")
         let direccion: string = rls.question("Escriba la direccion de la sucursal: ")
-           let sucursal2 = new Sucursal(nombre, direccion)
-        
-        
+        let sucursal2 = new Sucursal(nombre, direccion)
+
+
         do {
             sucursal2 = new Sucursal(nombre, direccion)
-        } while (this.listaClientes.some(cliente => cliente.getId()==sucursal2.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==sucursal2.getId())||this.listaSucursal.some(suc => suc.getId()==sucursal2.getId()));
+        } while (this.listaClientes.some(cliente => cliente.getId() == sucursal2.getId()) || this.listaProvedores.some(Proveedor => Proveedor.getId() == sucursal2.getId()) || this.listaSucursal.some(suc => suc.getId() == sucursal2.getId()));
         this.listaSucursal.push(sucursal2)
     }
     cambioNombreSucursal(): void {
@@ -273,9 +281,9 @@ export class Veterinaria implements Id {
             this.listaSucursal.splice(pos, 1);
         }
     }
-    
-    
- //-------------------------------------------- PROVEEDOR
+
+
+    //-------------------------------------------- PROVEEDOR
     agregarProveedor(): void {
         let nombre: string = rls.question("Escriba su nombre del Proveedor: ")
         let telefono: number = rls.questionInt("Escriba el telefono del Proveedor: ")
@@ -284,7 +292,7 @@ export class Veterinaria implements Id {
 
         do {
             proveedor = new Proveedor(nombre, telefono)
-        } while (this.listaClientes.some(cliente => cliente.getId()==proveedor.getId())||this.listaProvedores.some(Proveedor => Proveedor.getId()==proveedor.getId())||this.listaSucursal.some(suc => suc.getId()==proveedor.getId()));
+        } while (this.listaClientes.some(cliente => cliente.getId() == proveedor.getId()) || this.listaProvedores.some(Proveedor => Proveedor.getId() == proveedor.getId()) || this.listaSucursal.some(suc => suc.getId() == proveedor.getId()));
         this.listaProvedores.push(proveedor)
 
     }
@@ -294,7 +302,7 @@ export class Veterinaria implements Id {
         });
         let numId: number = rls.questionInt("Escriba el Id del Proveedor a modificar el telefono: ")
         let pos = this.listaProvedores.findIndex(proveedor => proveedor.getId() === numId);
-        let telefono= rls.questionInt("Escriba el nuevo numero: ")
+        let telefono = rls.questionInt("Escriba el nuevo numero: ")
         if (pos == -1) {
             console.log("No hay clientes con ese Id")
         } else {
@@ -331,7 +339,7 @@ export class Veterinaria implements Id {
             this.listaProvedores.splice(pos, 1);
         }
     }
-    
+
     generarNumRandom(): number {
         let numeroRandom = Math.random() * 100;
         return Math.round(numeroRandom);
